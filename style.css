@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    --page-dimesions: 900px;
+    width: var(--page-dimesions);
+    height: var(--page-dimesions);
+    
+}
+
+.grid{
+    width: calc(var(--page-dimesions) / 16 - 8px);
+    height: calc(var(--page-dimesions) / 16 - 8px);
+    border: 1px solid black;
+    margin: calc(0.00222 * var(--page-dimesions));
+}
+
+button{
+    width: auto;
+    height: 30px;
+    font-size: 20px;
+    margin: 10px 0;
+}
