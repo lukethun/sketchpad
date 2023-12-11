@@ -7,12 +7,16 @@ let gridDiv = document.querySelectorAll('.grid');
 
 // Delete old grid and generate a new one with specified size
 button.addEventListener('click', () => {
-    deleteGrid();
     let gridSize = prompt('Please enter grid size');
+    if(gridSize >= 100){
+        alert('Please enter a number below 100');
+    } else {
+    deleteGrid();
     document.documentElement.style.setProperty(`--box-sizing`, `calc(var(--page-dimensions) / ${gridSize} - 1px`);
     generateGrid(gridSize);      
     gridDiv = document.querySelectorAll('.grid'); 
     gridColour();
+    }
 })
 
 
