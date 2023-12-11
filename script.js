@@ -5,14 +5,18 @@ let gridDiv = document.querySelectorAll('.grid');
 
 
 
-
+// Delete old grid and generate a new one with specified size
 button.addEventListener('click', () => {
     deleteGrid();
     let gridSize = prompt('Please enter grid size');
+    document.documentElement.style.setProperty(`--box-sizing`, `calc(var(--page-dimensions) / ${gridSize} - 1px`);
     generateGrid(gridSize);      
     gridDiv = document.querySelectorAll('.grid'); 
     gridColour();
 })
+
+
+
 
 
 
@@ -23,8 +27,6 @@ function gridColour(){
         })
     })
 }
-
-
 
 function generateGrid(size){
     for(let i = 0; i < size*size; i++){
@@ -41,3 +43,4 @@ function deleteGrid(){
         grid.remove();
     })
 }
+

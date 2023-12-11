@@ -1,3 +1,9 @@
+:root{
+    --page-dimensions: 900px;
+
+}
+
+
 body{
     display: flex;
     justify-content: center;
@@ -9,17 +15,18 @@ body{
 .container{
     display: flex;
     flex-wrap: wrap;
-    --page-dimesions: 900px;
-    width: var(--page-dimesions);
-    height: var(--page-dimesions);
+    width: var(--page-dimensions);
+    height: var(--page-dimensions);
     
 }
 
 .grid{
-    width: calc(var(--page-dimesions) / 16 - 8px);
-    height: calc(var(--page-dimesions) / 16 - 8px);
+    box-sizing: border-box;
+    width: var(--box-sizing); /*--box-sizing defined in script.js | --page-dimensions / gridSize |*/
+    height: var(--box-sizing);
     border: 1px solid black;
-    margin: calc(0.00222 * var(--page-dimesions));
+    margin: 0.5px;
+    
 }
 
 button{
