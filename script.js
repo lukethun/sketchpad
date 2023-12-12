@@ -1,7 +1,12 @@
 const container = document.querySelector('.container');
 const button = document.querySelector('button');
 const clearButton = document.createElement('button');
+const rainbowButton = document.createElement('button');
+const gradientButton = document.createElement('button');
+rainbowButton.textContent = 'Rainbow';
+gradientButton.textContent = 'Gradient';
 const buttonContainer = document.querySelector('.button-container');
+buttonContainer.append(rainbowButton, gradientButton);
 let gridDiv = document.querySelectorAll('.grid');
 let gridSize = '';
 
@@ -19,8 +24,11 @@ button.addEventListener('click', () => {
     gridDiv = document.querySelectorAll('.grid'); 
     gridColour();
     clearColours();
+    gradient();
     }
 })
+
+
 
 
 
@@ -35,20 +43,41 @@ function clearColours(){
     })
 }
 
-function gridColour(colour){
+function gradient(){
+    gradientButton.addEventListener('click', () => {
+        gridDiv.forEach(grid => {
+            grid.addEventListener('mouseover', () => {
+                grid.style.backgroundColor = 'black';
+                const currentOpacity = grid.style.opacity;
+                
+                console.log('Curr Opp: ' + currentOpacity);
+                if(currentOpacity){
+                    console.log("true");
+                    grid.style.opacity = Number(currentOpacity) + 0.1;
+                } else {
+                    console.log('false');
+                    grid.style.opacity = 0.1;
+                }
+            })
+        })
+    })
+}
+
+
+
+function gridColour(){
+    rainbowButton.addEventListener('click', () => {
     gridDiv.forEach(grid => {
         grid.addEventListener('mouseover', () =>{
-            
             grid.setAttribute('style', `background-color: ${getRandomRgb()}`);
             })
         })
+    })
 }
-
 function generateGrid(size){
     for(let i = 0; i < size*size; i++){
         const gridDiv = document.createElement('div');
         gridDiv.setAttribute('class', 'grid');
-        gridDiv.textContent = '';
         container.appendChild(gridDiv);
     }
 }
@@ -67,3 +96,13 @@ function getRandomRgb() {
     var b = num & 255;
     return 'rgb(' + r + ', ' + g + ', ' + b + ');';
 }
+
+
+
+
+
+// function gridDarken(){
+//     gridDiv.forEach(grid => {
+//         grid.style.filter = 'brightness(50%)';
+//     })
+// }

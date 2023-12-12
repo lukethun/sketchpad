@@ -17,6 +17,7 @@ body{
     flex-wrap: wrap;
     width: var(--page-dimensions);
     height: var(--page-dimensions);
+
     
 }
 
@@ -26,7 +27,6 @@ body{
     height: var(--box-sizing);
     border: 1px solid black;
     margin: 0.5px;
-    
 }
 
 button{
