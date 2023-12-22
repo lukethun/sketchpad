@@ -28,10 +28,6 @@ button.addEventListener('click', () => {
     }
 })
 
-
-
-
-
 function clearColours(){
     clearButton.textContent = 'Clear Grid';
     buttonContainer.appendChild(clearButton);
@@ -45,17 +41,15 @@ function clearColours(){
 
 function gradient(){
     gradientButton.addEventListener('click', () => {
+        removeGridEventListeners();
         gridDiv.forEach(grid => {
             grid.addEventListener('mouseover', () => {
                 grid.style.backgroundColor = 'black';
                 const currentOpacity = grid.style.opacity;
                 
-                console.log('Curr Opp: ' + currentOpacity);
                 if(currentOpacity){
-                    console.log("true");
                     grid.style.opacity = Number(currentOpacity) + 0.1;
                 } else {
-                    console.log('false');
                     grid.style.opacity = 0.1;
                 }
             })
@@ -63,10 +57,10 @@ function gradient(){
     })
 }
 
-
-
 function gridColour(){
     rainbowButton.addEventListener('click', () => {
+    removeGridEventListeners();
+    
     gridDiv.forEach(grid => {
         grid.addEventListener('mouseover', () =>{
             grid.setAttribute('style', `background-color: ${getRandomRgb()}`);
@@ -74,6 +68,7 @@ function gridColour(){
         })
     })
 }
+
 function generateGrid(size){
     for(let i = 0; i < size*size; i++){
         const gridDiv = document.createElement('div');
@@ -97,12 +92,10 @@ function getRandomRgb() {
     return 'rgb(' + r + ', ' + g + ', ' + b + ');';
 }
 
-
-
-
-
-// function gridDarken(){
-//     gridDiv.forEach(grid => {
-//         grid.style.filter = 'brightness(50%)';
-//     })
-// }
+function removeGridEventListeners() {
+    gridDiv.forEach(grid => {
+        const newGrid = grid.cloneNode(true);
+        grid.parentNode.replaceChild(newGrid, grid);
+    });
+    gridDiv = document.querySelectorAll('.grid');
+}
